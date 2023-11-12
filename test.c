@@ -1,22 +1,20 @@
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
 #include <stdlib.h>
-
-int main()
-{
-    int statLoc;
-    int bryan;
-    int value=0;
-
-    bryan  = 10;
-    if(fork() == 0)
-    {
-        printf("test PID parent %d , PID Child : %d\n",getppid(),getpid());
-    }else{
-        wait(&statLoc);
-        printf("PID parent: %d , value returned %d",getpid(),WEXITSTATUS(statLoc));
+#include <unistd.h>
+ 
+int main () {
+  int i = 0;
+ 
+  setbuf(stdout,0);
+  while (i<=2 && fork()){
+    if (!fork()) {
+      fprintf (stdout, "Running Exec ...");
+      execlp ("echo", "echo", "i*i", (char *) 0);
     }
-    exit(100);
-}
+    i++;
+    fprintf (stdout, "Running System ...");
+    system ("echo i+i");
+  }
+ 
+  return (0);
+} 
