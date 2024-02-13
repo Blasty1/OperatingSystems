@@ -2,6 +2,11 @@
     "files.associations": {
         "wait.h": "c",
         "unistd.h": "c",
-        "fcntl.h": "c"
+        "fcntl.h": "c",
+        "ctype.h": "c",
+        "string.h": "c",
+        "__mutex_base": "c",
+        "atomic": "c",
+        "semaphore.h": "c"
     }
 }
